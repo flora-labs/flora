@@ -1,8 +1,10 @@
 # Flora
 - Flora is based on cosmos-sdk v0.50.6 
 
+If you would like to participate please join our Discord: https://discord.gg/4Qx9UxKMBE
+
 ## Modules
-- Proof of Stake
+- proof-of-stake
 - tokenfactory
 - globalfee
 - ibc-packetforward
