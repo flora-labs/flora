@@ -152,7 +152,7 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 ## 🔗 Links
 
 - **Website**: https://flora.network
-- **Explorer**: Available via PingPub integration
+- **Explorer**: [Flora Explorer](https://explorer.flora.com) 
 - **Discord**: [Community Discord](https://discord.gg/flora)
 - **Twitter**: [@FloraChain](https://twitter.com/FloraChain)
 
