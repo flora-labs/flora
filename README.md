@@ -1,6 +1,38 @@
-# Flora - EVM-Compatible Cosmos Blockchain
+<p align="center">
+  <a href="https://flora.network">
+    <img src="https://flora.network/assets/flora-wordmark.svg" alt="Flora Network" height="60">
+  </a>
+</p>
 
-Flora is a high-performance, EVM-compatible blockchain built on the Cosmos SDK, designed to provide seamless interoperability between Ethereum and Cosmos ecosystems.
+<p align="center">
+  <em>Cultivating AI for a smarter world</em>
+</p>
+
+<h1 align="center">Flora Network — Multi-Agent AI Infrastructure</h1>
+
+<p align="center">
+  EVM-compatible blockchain built on the Cosmos SDK, purpose-built for AI, DePIN, and DeFi applications
+</p>
+
+<p align="center">
+  <a href="https://docs.flora.network">Docs</a> •
+  <a href="https://explorer.flora.network">Explorer</a> •
+  <a href="https://testnet.flora.network">Testnet</a> •
+  <a href="https://discord.flora.network">Discord</a> •
+  <a href="https://x.com/flora_network">X</a>
+</p>
+
+## 🌿 At a Glance
+
+- **Multi-agent orchestration**: Agents that can sense, collaborate, decide, and act
+- **Built on Cosmos SDK**: Enterprise-grade blockchain infrastructure with EVM compatibility
+- **AI-optimized**: Designed for AI, DePIN (Decentralized Physical Infrastructure), and DeFi workloads
+- **Cross-chain native**: IBC protocol for seamless interoperability
+- **Developer-friendly**: Full Ethereum tooling support while leveraging Cosmos performance
+
+## 📖 Technical Overview
+
+Flora is a high-performance, EVM-compatible blockchain built on the Cosmos SDK. It preserves Ethereum developer workflows (RPC, wallets, tooling) while providing Cosmos-native performance and interoperability. Deploy agentic applications that leverage on-chain coordination and off-chain AI systems.
 
 ## 🌟 Key Features
 
@@ -151,10 +183,11 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 
 ## 🔗 Links
 
-- **Website**: https://flora.network
-- **Explorer**: [Flora Explorer](https://explorer.flora.network) 
-- **Discord**: [Community Discord](https://discord.flora.network)
-- **Twitter**: [@Flora_Network](https://x.com/flora_network)
+- **Website**: [flora.network](https://flora.network)
+- **Documentation**: [docs.flora.network](https://docs.flora.network)
+- **Explorer**: [explorer.flora.network](https://explorer.flora.network)
+- **Discord**: [Join our community](https://discord.flora.network)
+- **Twitter/X**: [@Flora_Network](https://x.com/flora_network)
 
 ## ⚠️ Disclaimer
 
@@ -162,4 +195,4 @@ Flora is currently in active development. Use at your own risk in production env
 
 ---
 
-Built with ❤️ using the Cosmos SDK and EVM ecosystem.
+Built with 🌿 for the future of human-AI collaboration.
