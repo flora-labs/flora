@@ -154,7 +154,7 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 - **Website**: https://flora.network
 - **Explorer**: [Flora Explorer](https://explorer.flora.network) 
 - **Discord**: [Community Discord](https://discord.flora.network)
-- **Twitter**: [@FloraChain](https://x.com/flora_network)
+- **Twitter**: [@Flora_Network](https://x.com/flora_network)
 
 ## ⚠️ Disclaimer
 
