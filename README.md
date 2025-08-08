@@ -10,7 +10,6 @@
 
 <p align="center">
   <a href="https://explorer.flora.network">Explorer</a> •
-  <a href="https://testnet.flora.network">Testnet</a> •
   <a href="https://discord.flora.network">Discord</a> •
   <a href="https://x.com/flora_network">X</a>
 </p>
