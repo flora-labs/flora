@@ -1,9 +1,8 @@
-<div align="center">
-  <h1>
-    <img src="assets/flora-leaf.svg" alt="Flora" width="80" height="80" style="vertical-align: middle; padding: 15px; background: #f6f8fa; border-radius: 10px; margin-right: 15px; position: relative; top: 10px;">
-    Flora Blockchain
-  </h1>
-</div>
+<h1 align="center">
+  <img src="assets/flora-leaf.svg" alt="Flora" height="60" width="60" />
+  &nbsp;&nbsp;&nbsp;
+  Flora Blockchain
+</h1>
 
 <p align="center">
   <strong>High-Performance EVM-Compatible Blockchain Built on Cosmos SDK</strong>
