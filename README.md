@@ -2,7 +2,7 @@
   <br/>
   <a href="https://flora.network">
     <kbd>
-      <img src="assets/flora-logo.svg" alt="Flora Network" height="60">
+      <img src="assets/flora-leaf.svg" alt="Flora" height="80">
     </kbd>
   </a>
   <br/><br/>
