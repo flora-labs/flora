@@ -1,12 +1,14 @@
-<br/>
+<p align="center">
+  <br/>
+  <a href="https://flora.network">
+    <kbd>
+      <img src="assets/flora-logo.svg" alt="Flora Network" height="60">
+    </kbd>
+  </a>
+  <br/><br/>
+</p>
 
-<h1 align="center">
-  <br>
-  🌿
-  <br>
-  Flora Blockchain
-  <br>
-</h1>
+<h1 align="center">Flora Blockchain</h1>
 
 <p align="center">
   <strong>AI-Adjacent EVM-Compatible Blockchain Infrastructure</strong>

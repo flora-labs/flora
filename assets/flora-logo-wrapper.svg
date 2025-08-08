@@ -1,0 +1,10 @@
+<svg width="300" height="120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8eaf6;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#f3e5f5;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="120" rx="10" fill="url(#bg-gradient)" />
+  <image href="flora-logo.svg" x="85" y="40" width="129" height="40" />
+</svg>
