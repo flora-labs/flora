@@ -1,7 +1,11 @@
 <p align="center">
   <a href="https://flora.network">
-    <img src="https://flora.network/assets/flora-wordmark.svg" alt="Flora Network" height="60">
+    <img src="assets/flora-logo.svg" alt="Flora Network" height="80">
   </a>
+</p>
+
+<p align="center">
+  <img src="assets/flora-leaf.svg" alt="Flora Leaf" height="50">
 </p>
 
 <p align="center">
