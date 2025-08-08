@@ -1,21 +1,19 @@
+<br/>
+
+<h1 align="center">
+  <br>
+  🌿
+  <br>
+  Flora Blockchain
+  <br>
+</h1>
+
 <p align="center">
-  <a href="https://flora.network">
-    <img src="assets/flora-logo.svg" alt="Flora Network" height="80">
-  </a>
+  <strong>AI-Adjacent EVM-Compatible Blockchain Infrastructure</strong>
 </p>
 
 <p align="center">
-  <img src="assets/flora-leaf.svg" alt="Flora Leaf" height="50">
-</p>
-
-<p align="center">
-  <em>Cultivating AI for a smarter world</em>
-</p>
-
-<h1 align="center">Flora Network — Multi-Agent AI Infrastructure</h1>
-
-<p align="center">
-  EVM-compatible blockchain built on the Cosmos SDK, purpose-built for AI, DePIN, and DeFi applications
+  <em>Blockchain consensus layer for distributed AI service coordination and state management</em>
 </p>
 
 <p align="center">
@@ -28,15 +26,16 @@
 
 ## 🌿 At a Glance
 
-- **Multi-agent orchestration**: Agents that can sense, collaborate, decide, and act
-- **Built on Cosmos SDK**: Enterprise-grade blockchain infrastructure with EVM compatibility
-- **AI-optimized**: Designed for AI, DePIN (Decentralized Physical Infrastructure), and DeFi workloads
-- **Cross-chain native**: IBC protocol for seamless interoperability
-- **Developer-friendly**: Full Ethereum tooling support while leveraging Cosmos performance
+- **AI-Adjacent Infrastructure**: Provides consensus and state management for distributed AI services
+- **Full EVM Compatibility**: Deploy and run Ethereum smart contracts without modification
+- **Cosmos SDK Foundation**: Enterprise-grade blockchain infrastructure with proven security
+- **IBC Protocol**: Native cross-chain communication with the entire Cosmos ecosystem
+- **High Performance**: Fast finality with Tendermint consensus (< 6 second blocks)
+- **Developer Friendly**: Use familiar Ethereum tools while leveraging Cosmos performance
 
 ## 📖 Technical Overview
 
-Flora is a high-performance, EVM-compatible blockchain built on the Cosmos SDK. It preserves Ethereum developer workflows (RPC, wallets, tooling) while providing Cosmos-native performance and interoperability. Deploy agentic applications that leverage on-chain coordination and off-chain AI systems.
+Flora is an EVM-compatible blockchain built on the Cosmos SDK, designed to interface with distributed AI services. The blockchain provides consensus and persistent state management for AI workloads, enabling verifiable computation and deterministic settlement. Standard Ethereum tooling (MetaMask, Hardhat, Foundry) works out-of-the-box while maintaining full compatibility with Cosmos IBC for cross-chain communication.
 
 ## 🌟 Key Features
 
@@ -199,4 +198,4 @@ Flora is currently in active development. Use at your own risk in production env
 
 ---
 
-Built with 🌿 for the future of human-AI collaboration.
+Built with ❤️ using Cosmos SDK and Ethereum Virtual Machine.
