@@ -365,4 +365,4 @@ pruning-interval = "10"
 
 - **GitHub**: https://github.com/flora-labs/flora
 - **Discord**: https://discord.flora.network
-- **Documentation**: https://docs.flora.network 
+- **Documentation**: (coming soon) 
