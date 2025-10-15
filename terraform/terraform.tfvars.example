@@ -1,0 +1,15 @@
+# Example Terraform Variables for Flora RPC ALB
+# Copy this to terraform.tfvars and fill in your values
+
+# VPC where your Flora nodes are running
+vpc_id = "vpc-xxxxxxxx"
+
+# Public subnets (must be in at least 2 availability zones)
+subnet_ids = [
+  "subnet-xxxxxxxx",  # us-west-1a
+  "subnet-yyyyyyyy"   # us-west-1c
+]
+
+# ACM Certificate ARN for rpc.flora.network
+# Get this from AWS Certificate Manager after validating domain
+certificate_arn = "arn:aws:acm:us-west-1:xxxxxxxxxxxx:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

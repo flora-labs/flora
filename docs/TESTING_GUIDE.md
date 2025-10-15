@@ -190,7 +190,8 @@ module.exports = {
     networks: {
         flora: {
             url: "http://localhost:8545",
-            chainId: 7668378,
+            // Use EVM chainId (eth_chainId), not net_version
+            chainId: 9000,
             accounts: [process.env.PRIVATE_KEY]
         }
     }
