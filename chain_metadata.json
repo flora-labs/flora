@@ -1,16 +1,108 @@
 {
-  "display": {
-    "name": "flora",
-    "description": "flora is an Interchain blockchain.",
-    "links": {
-      "logo": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.png",
-      "discord": "https://discord.gg/your-discord",
-      "email": "example@example.com",
-      "github": "https://github.com/rollchains/flora",
-      "telegram": "https://t.me/example",
-      "twitter": "https://twitter.com/example_account",
-      "website": "https://example.com",
-      "whitepaper": "https://bitcoin.org/bitcoin.pdf"
+  "network_name": "Flora Network",
+  "chain_id": {
+    "cosmos": "flora_7668378-1",
+    "evm": {
+      "devnet": {
+        "decimal": 766999,
+        "hex": "0xbb3e7",
+        "decision_date": "2025-10-15",
+        "status": "approved",
+        "network_name": "Flora Devnet",
+        "purpose": "Development and testing environment"
+      },
+      "mainnet": {
+        "decimal": 766793,
+        "hex": "0xbb349",
+        "decision_date": "2025-10-15",
+        "status": "reserved",
+        "network_name": "Flora Network",
+        "purpose": "Production blockchain (reserved for mainnet launch)"
+      },
+      "deprecated": [
+        {
+          "decimal": 9000,
+          "hex": "0x2328",
+          "issue": "Collision with Evmos Testnet",
+          "deprecated_date": "2025-10-15"
+        },
+        {
+          "decimal": 7668378,
+          "hex": "0x75029a",
+          "issue": "Collision with QL1 Testnet",
+          "status": "rejected"
+        }
+      ]
     }
-  }
+  },
+  "native_currency": {
+    "name": "FLORA",
+    "symbol": "FLORA",
+    "decimals": 18,
+    "denom": "uflora"
+  },
+  "rpc_endpoints": {
+    "production": {
+      "evm_json_rpc": "https://rpc.flora.network",
+      "tendermint_rpc": "https://rpc.flora.network:26657",
+      "cosmos_rest_api": "https://api.flora.network:1317"
+    },
+    "testnet": {
+      "nodes": [
+        {
+          "name": "Flora-Genesis",
+          "hostname": "seed1.testnet.flora.network",
+          "ip": "52.9.17.25",
+          "evm_json_rpc": "http://52.9.17.25:8545",
+          "tendermint_rpc": "http://52.9.17.25:26657",
+          "cosmos_rest_api": "http://52.9.17.25:1317"
+        },
+        {
+          "name": "Flora-Guardian",
+          "hostname": "seed2.testnet.flora.network",
+          "ip": "50.18.34.12",
+          "evm_json_rpc": "http://50.18.34.12:8545",
+          "tendermint_rpc": "http://50.18.34.12:26657",
+          "cosmos_rest_api": "http://50.18.34.12:1317"
+        },
+        {
+          "name": "Flora-Nexus",
+          "hostname": "seed3.testnet.flora.network",
+          "ip": "204.236.162.240",
+          "evm_json_rpc": "http://204.236.162.240:8545",
+          "tendermint_rpc": "http://204.236.162.240:26657",
+          "cosmos_rest_api": "http://204.236.162.240:1317"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "devnet": {
+      "chainlist_org": "https://chainlist.org/?search=766999",
+      "chainid_network": "https://chainid.network/?search=766999",
+      "verified_date": "2025-10-15",
+      "verified_by": "Chain core team",
+      "status": "unique"
+    },
+    "mainnet": {
+      "chainlist_org": "https://chainlist.org/?search=766793",
+      "chainid_network": "https://chainid.network/?search=766793",
+      "verified_date": "2025-10-15",
+      "verified_by": "Chain core team",
+      "status": "unique"
+    }
+  },
+  "strategy": {
+    "description": "Dual chain ID strategy to distinguish devnet from mainnet",
+    "devnet_rationale": "FLORA base (766) + test suffix (999) clearly marks development environment",
+    "mainnet_rationale": "Premium FLORA encoding (766793) reserved for production launch",
+    "documentation": "See docs/CHAIN_ID_STRATEGY.md for complete architecture"
+  },
+  "notes": [
+    "Devnet: 766999 (0xbb3e7) - FLORA base + test indicator",
+    "Mainnet: 766793 (0xbb349) - Full FLORA encoding (reserved)",
+    "Both chain IDs verified unused on all major chain registries",
+    "Designed to eliminate MetaMask network mismatch warnings",
+    "Devnet regenesis required to migrate from 9000 to 766999"
+  ]
 }

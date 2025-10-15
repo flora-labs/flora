@@ -41,6 +41,30 @@ Out:
 
 Decision record: store final decimal+hex in `chain_metadata.json`.
 
+### **Selected Chain ID for Devnet: 766999 (0xbb3e7)**
+
+**Decision Date**: 2025-10-15
+**Network**: Devnet only (mainnet reserved separately)
+**Verification Status**: ✅ Verified unused on chainlist.org and chainid.network
+
+**Rationale**:
+- FLORA base encoding (766) + testnet indicator (999)
+- Clearly distinguishes devnet from mainnet
+- High enough to avoid common chain ID conflicts
+- No collision with existing networks (unlike 9000/Evmos or 7668378/QL1)
+- Provides clean MetaMask experience with zero warnings
+- Reserves premium chain ID (766793) for mainnet launch
+
+**Mainnet Reserved**: 766793 (0xbb349) - Full FLORA encoding, saved for production
+
+**Alternatives Considered**:
+- 766793 (0xbb349) - Reserved for mainnet (premium FLORA encoding)
+- 76679 (0x12b87) - Shorter variant, less distinctive
+- 420766 (0x66b9e) - Memorable prefix, no FLORA connection
+- 7668378 (0x75029a) - Original plan, already used by QL1 Testnet
+
+**Strategic Documentation**: See `docs/CHAIN_ID_STRATEGY.md` for complete network architecture
+
 ## Cutover Plan (T‑0 to T+90m)
 
 1) Freeze writes and announce maintenance.
@@ -107,4 +131,6 @@ Decision record: store final decimal+hex in `chain_metadata.json`.
 ## Implementation Log
 
 - 2025-10-15: Draft runbook created. Awaiting chainId decision and window scheduling.
+- 2025-10-15: Chain ID decision finalized. Devnet: 766999 (0xbb3e7), Mainnet reserved: 766793 (0xbb349).
+- 2025-10-15: Created comprehensive chain ID strategy document (`docs/CHAIN_ID_STRATEGY.md`).
 

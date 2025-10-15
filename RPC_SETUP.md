@@ -90,20 +90,37 @@ rpc.flora.network  CNAME  flora-rpc-alb-xxxxx.us-west-1.elb.amazonaws.com
 
 Once rpc.flora.network is live:
 
-### MetaMask Configuration
+### MetaMask Configuration - Devnet
+```javascript
+const FLORA_DEVNET_CONFIG = {
+  chainId: '0xbb3e7',  // 766999 in decimal
+  chainName: 'Flora Devnet',
+  nativeCurrency: {
+    name: 'FLORA',
+    symbol: 'FLORA',
+    decimals: 18
+  },
+  rpcUrls: ['https://rpc.devnet.flora.network'],  // Devnet load-balanced endpoint
+  blockExplorerUrls: ['https://explorer.devnet.flora.network']
+};
+```
+
+### MetaMask Configuration - Mainnet (Reserved)
 ```javascript
 const FLORA_MAINNET_CONFIG = {
-  chainId: '0x2328',
+  chainId: '0xbb349',  // 766793 in decimal (reserved for production)
   chainName: 'Flora Network',
   nativeCurrency: {
     name: 'FLORA',
     symbol: 'FLORA',
     decimals: 18
   },
-  rpcUrls: ['https://rpc.flora.network'],  // Clean, professional URL
+  rpcUrls: ['https://rpc.flora.network'],  // Mainnet load-balanced endpoint
   blockExplorerUrls: ['https://explorer.flora.network']
 };
 ```
+
+**Note**: Dual chain ID strategy - Devnet uses 766999 (0xbb3e7), Mainnet reserved for 766793 (0xbb349). See `docs/CHAIN_ID_STRATEGY.md`.
 
 ### For Development (Current)
 ```javascript
