@@ -7,14 +7,14 @@
 
 ## Summary
 
-Complete genesis configuration and regenesis plan for Flora Devnet with new EVM chain ID 766999 (0xbb3e7). Includes validator allocations, total supply, and coordinated genesis script for all 3 validators.
+Complete genesis configuration and regenesis plan for Flora Devnet with new EVM chain ID 766999 (0xBB417). Includes validator allocations, total supply, and coordinated genesis script for all 3 validators.
 
 ## Genesis Parameters
 
 ### Chain Configuration
 ```
 Cosmos Chain ID: flora_7668378-1
-EVM Chain ID: 766999 (0xbb3e7)
+EVM Chain ID: 766999 (0xBB417)
 Genesis Time: TBD (coordinated launch)
 Network Name: Flora Devnet
 ```
@@ -60,6 +60,13 @@ Each validator node will need:
 
 **Action Required**: Generate keys on each node before genesis coordination.
 
+For faucet/dev pool (devnet):
+```bash
+# On lead node
+./scripts/create_genesis_accounts.sh
+# Produces genesis_accounts.env / .json with FAUCET_ADDR and DEVPOOL_ADDR
+```
+
 ## Genesis Creation Process
 
 ### Phase 1: Local Genesis Preparation (Each Validator)
@@ -95,6 +102,10 @@ florad genesis gentx validator 1000000000000000000000000uflora \
   --min-self-delegation="1" \
   --keyring-backend $KEYRING
 
+# Validate gentx locally (delegator_address and denom)
+jq -r '.body.messages[0].delegator_address, .body.messages[0].value.denom' ~/.flora/config/gentx/gentx-*.json
+## Expect: non-empty delegator_address (flora1...) and denom uflora.
+
 # Gentx file created at: ~/.flora/config/gentx/gentx-*.json
 ```
 
@@ -109,19 +120,27 @@ florad genesis gentx validator 1000000000000000000000000uflora \
 CHAIN_ID="flora_7668378-1"
 
 # Step 1: Collect gentx files from other validators
-# Copy gentx-guardian.json and gentx-nexus.json to ~/.flora/config/gentx/
+# Copy gentx files (guardian/nexus) into ~/.flora/config/gentx/
 
-# Step 2: Add additional genesis accounts (faucet, dev pool)
-# Faucet account
-florad genesis add-genesis-account flora1faucet... 10000000000000000000000000uflora
+# Step 2: Add additional genesis accounts (faucet, dev pool) and peer validator allocations
+# The lead helper script can auto-detect validator addresses from gentx files and mint 10M to each validator.
+# Alternatively, pass them explicitly via OTHER_VALIDATOR_ADDRS. If FAUCET_ADDR/DEVPOOL_ADDR are not in env,
+# place a genesis_accounts.env (created by scripts/create_genesis_accounts.sh) alongside the script.
+# Example (using helper):
+# ROLE=lead FAUCET_ADDR=flora1faucet... DEVPOOL_ADDR=flora1devpool... \\
+#   OTHER_VALIDATOR_ADDRS="flora1guardian... flora1nexus..." \\
+#   ./scripts/quick_regenesis_766999.sh Flora-Genesis
 
-# Development pool
-florad genesis add-genesis-account flora1devpool... 1000000000000000000000000uflora
-
-# Step 3: Collect all genesis transactions
+# Step 3: Validate gentx files then collect
+for f in ~/.flora/config/gentx/gentx-*.json; do
+  da=$(jq -r '.body.messages[0].delegator_address' $f)
+  denom=$(jq -r '.body.messages[0].value.denom' $f)
+  [ -z "$da" ] && echo "ERROR: empty delegator_address in $f" && exit 1
+  [ "$denom" != "uflora" ] && echo "ERROR: wrong denom in $f: $denom" && exit 1
+done
 florad genesis collect-gentxs
 
-# Step 4: Update genesis with EVM chain ID 766999
+# Step 4: Update genesis with EVM chain ID 766999 (0xBB417)
 update_genesis() {
   cat $HOME/.flora/config/genesis.json | \
     jq "$1" > $HOME/.flora/config/tmp_genesis.json && \
@@ -136,12 +155,12 @@ update_genesis '.app_state["evm"]["params"]["evm_denom"]="uflora"'
 update_genesis '.app_state["evm"]["params"]["enable_create"]=true'
 update_genesis '.app_state["evm"]["params"]["enable_call"]=true'
 
-# Set fee market params for devnet
-update_genesis '.app_state["feemarket"]["params"]["base_fee"]="1000000000"'
-update_genesis '.app_state["feemarket"]["params"]["no_base_fee"]=false'
+# Optional fee market params for devnet (defaults are fine)
+# update_genesis '.app_state["feemarket"]["params"]["base_fee"]="0"'
+# update_genesis '.app_state["feemarket"]["params"]["no_base_fee"]=true'
 
 # Step 5: Validate genesis
-florad genesis validate-genesis
+florad genesis validate
 
 # Step 6: Calculate SHA256 hash for verification
 sha256sum ~/.flora/config/genesis.json
@@ -219,7 +238,7 @@ florad status | jq '.SyncInfo.latest_block_height'
 curl -s -X POST -H "Content-Type: application/json" \
   --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}' \
   http://localhost:8545 | jq -r '.result'
-# Expected: 0xbb3e7
+# Expected: 0xBB417
 
 # 3. Check validator is active
 florad query staking validators
@@ -331,8 +350,9 @@ florad keys import validator exported_key.json --keyring-backend test
 ## Post-Regenesis Checklist
 
 - [ ] All 3 validators running and producing blocks
-- [ ] EVM chain ID verified as 766999 (0xbb3e7)
+- [ ] EVM chain ID verified as 766999 (0xBB417)
 - [ ] Total supply matches: 50,000,000 FLORA
+- [ ] Reserve account funded with 9,000,000 FLORA
 - [ ] Each validator has ~9M FLORA remaining (after 1M stake)
 - [ ] Faucet account has 10M FLORA
 - [ ] Development pool has 1M FLORA

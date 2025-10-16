@@ -126,7 +126,7 @@ from_scratch () {
 
   $BINARY genesis collect-gentxs --home $HOME_DIR
 
-  $BINARY genesis validate-genesis --home $HOME_DIR
+  $BINARY genesis validate --home $HOME_DIR
   err=$?
   if [ $err -ne 0 ]; then
     echo "Failed to validate genesis"

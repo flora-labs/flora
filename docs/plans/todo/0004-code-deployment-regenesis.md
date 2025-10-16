@@ -97,7 +97,7 @@ echo "Build Date: $(date)" > deployment/VERSION
 echo "Git Commit: $(git rev-parse HEAD)" >> deployment/VERSION
 echo "Git Branch: $(git branch --show-current)" >> deployment/VERSION
 echo "Chain ID (Cosmos): flora_7668378-1" >> deployment/VERSION
-echo "Chain ID (EVM): 766999 (0xbb3e7)" >> deployment/VERSION
+echo "Chain ID (EVM): 766999 (0xBB417)" >> deployment/VERSION
 
 # Create tarball for easy transfer
 cd deployment
@@ -327,7 +327,7 @@ florad genesis add-genesis-account flora1devpool... 200000000000000000000000000u
 florad genesis collect-gentxs
 
 # Validate genesis
-florad genesis validate-genesis
+  florad genesis validate
 
 # Calculate hash
 sha256sum ~/.flora/config/genesis.json
@@ -400,7 +400,7 @@ curl -s -X POST http://localhost:8545 \
   -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}' \
   | jq -r '.result'
-# Expected: 0xbb3e7
+  # Expected: 0xBB417
 ```
 
 ## Alternative: Simplified Deployment Script

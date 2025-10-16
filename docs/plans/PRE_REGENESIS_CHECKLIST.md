@@ -21,36 +21,28 @@ This checklist ensures all preparation is complete before executing the devnet r
 
 ## ✅ Configuration Decided
 
-- [x] Devnet EVM Chain ID: 766999 (0xbb3e7)
-- [x] Mainnet Chain ID Reserved: 766793 (0xbb349)
-- [x] Cosmos Chain ID: flora_7668378-1 (unchanged)
-- [x] Total Supply: 1,000,000,000 FLORA (1 billion)
+- [x] Devnet EVM Chain ID: 766999 (0xBB417)
+- [x] Mainnet Chain ID Reserved: 766793 (0xBB349)
+- [x] Cosmos Chain ID: flora_7668378-1 (unchanged for this devnet regenesis)
+- [x] Total Supply: 50,000,000 FLORA
 - [x] Token Distribution Plan:
-  - [x] Validator 1 (Flora-Genesis): 100M FLORA
-  - [x] Validator 2 (Flora-Guardian): 100M FLORA
-  - [x] Validator 3 (Flora-Nexus): 100M FLORA
-  - [x] Faucet: 500M FLORA
-  - [x] Dev Pool: 200M FLORA
-- [x] Validator Self-Stake: 10M FLORA each
+  - [x] Validator 1 (Flora-Genesis): 10,000,000 FLORA
+  - [x] Validator 2 (Flora-Guardian): 10,000,000 FLORA
+  - [x] Validator 3 (Flora-Nexus): 10,000,000 FLORA
+  - [x] Faucet: 10,000,000 FLORA
+  - [x] Dev Pool: 1,000,000 FLORA
+  - [x] Reserve: 9,000,000 FLORA
+- [x] Validator Self-Stake: 1,000,000 FLORA each
 
 ## ⚠️ Pre-Execution Requirements
 
 ### Account Preparation
 
-- [ ] **Generate faucet account**
+- [ ] **Generate faucet & dev pool accounts (devnet)**
   ```bash
-  florad keys add faucet --keyring-backend test
-  FAUCET_ADDR=$(florad keys show faucet -a --keyring-backend test)
-  echo "Faucet address: $FAUCET_ADDR"
-  # Save this address for genesis
-  ```
-
-- [ ] **Generate dev pool account**
-  ```bash
-  florad keys add devpool --keyring-backend test
-  DEVPOOL_ADDR=$(florad keys show devpool -a --keyring-backend test)
-  echo "Dev pool address: $DEVPOOL_ADDR"
-  # Save this address for genesis
+  # On lead node (devnet only)
+  ./scripts/create_genesis_accounts.sh
+  # Outputs: genesis_accounts.env (FAUCET_ADDR, DEVPOOL_ADDR) and genesis_accounts.json
   ```
 
 - [ ] **Backup account mnemonics** (store securely)
@@ -118,7 +110,7 @@ This checklist ensures all preparation is complete before executing the devnet r
 
 - [ ] **Prepare client update PRs** (see task 0002)
   - [ ] Update chain ID constants: 9000 → 766999
-  - [ ] Update chain ID hex: 0x2328 → 0xbb3e7
+  - [ ] Update chain ID hex: 0x2328 → 0xBB417
   - [ ] Update MetaMask configs
   - [ ] Update RPC endpoint URLs (if changing)
   - [ ] Test updates on staging
@@ -243,9 +235,11 @@ This checklist ensures all preparation is complete before executing the devnet r
   ./genesis_devnet_766999.sh [genesis|guardian|nexus]
   ```
 
-- [ ] Verify gentx created
+- [ ] Verify gentx created and valid
   ```bash
   ls -la ~/.flora/config/gentx/
+  # Check delegator_address (non-empty) and denom uflora
+  jq -r '.body.messages[0].delegator_address, .body.messages[0].value.denom' ~/.flora/config/gentx/gentx-*.json
   ```
 
 ### Phase 3: Coordination (30 min)
@@ -258,8 +252,8 @@ This checklist ensures all preparation is complete before executing the devnet r
 
 - [ ] Add faucet and dev pool accounts (Flora-Genesis only)
   ```bash
-  florad genesis add-genesis-account $FAUCET_ADDR 500000000000000000000000000uflora
-  florad genesis add-genesis-account $DEVPOOL_ADDR 200000000000000000000000000uflora
+  florad genesis add-genesis-account $FAUCET_ADDR 10000000000000000000000000uflora
+  florad genesis add-genesis-account $DEVPOOL_ADDR 1000000000000000000000000uflora
   ```
 
 - [ ] Collect genesis transactions (Flora-Genesis only)
@@ -277,7 +271,7 @@ This checklist ensures all preparation is complete before executing the devnet r
 
 - [ ] Validate genesis (Flora-Genesis only)
   ```bash
-  florad genesis validate-genesis
+  florad genesis validate
   ```
 
 - [ ] Calculate SHA256 hash (Flora-Genesis)
@@ -357,7 +351,7 @@ This checklist ensures all preparation is complete before executing the devnet r
     -H 'Content-Type: application/json' \
     -d '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}' \
     | jq -r '.result'
-  # Expected: 0xbb3e7
+  # Expected: 0xBB417
   ```
 
 - [ ] **Peer connections established**
@@ -368,9 +362,9 @@ This checklist ensures all preparation is complete before executing the devnet r
 
 - [ ] **Total supply correct**
   ```bash
-  curl -s http://52.9.17.25:1317/cosmos/bank/v1beta1/supply/by_denom?denom=uflora \
-    | jq -r '.amount.amount'
-  # Expected: 1000000000000000000000000000 (1 billion FLORA)
+  # Preferred on a node via CLI:
+  florad query bank total | jq -r '.supply[] | select(.denom=="uflora").amount'
+  # Expected: 50000000000000000000000000 (50 million FLORA)
   ```
 
 ### Extended Verification (T+30 min)
@@ -416,7 +410,7 @@ This checklist ensures all preparation is complete before executing the devnet r
 
 - [ ] **Share new network info**
   - [ ] RPC URL(s)
-  - [ ] Chain ID: 766999 (0xbb3e7)
+  - [ ] Chain ID: 766999 (0xBB417)
   - [ ] MetaMask add network link
   - [ ] Link to updated documentation
 

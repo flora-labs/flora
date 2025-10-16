@@ -13,7 +13,7 @@ Flora Network uses a dual chain ID strategy to distinguish between development/t
 
 ### Devnet (Current Priority)
 ```
-Chain ID: 766999 (0xbb3e7)
+Chain ID: 766999 (0xBB417)
 Network Name: Flora Devnet
 Purpose: Development and testing
 Status: Approved for immediate deployment
@@ -28,7 +28,7 @@ Status: Approved for immediate deployment
 
 ### Mainnet (Reserved)
 ```
-Chain ID: 766793 (0xbb349)
+Chain ID: 766793 (0xBB349)
 Network Name: Flora Network
 Purpose: Production blockchain
 Status: Reserved for mainnet launch
@@ -88,7 +88,7 @@ For each candidate chain ID:
 ```
 Flora Ecosystem
 │
-├── Devnet (766999 / 0xbb3e7)
+├── Devnet (766999 / 0xBB417)
 │   ├── Purpose: Active development and testing
 │   ├── Stability: Subject to frequent resets/regenesis
 │   ├── Access: Public for developers
@@ -99,7 +99,7 @@ Flora Ecosystem
 │   ├── Candidate ID: 766998 (0xbb3e6)
 │   └── Status: Not yet deployed
 │
-└── Mainnet (766793 / 0xbb349)
+└── Mainnet (766793 / 0xBB349)
     ├── Purpose: Production blockchain
     ├── Stability: Permanent, no regenesis
     ├── Access: Public
@@ -199,7 +199,7 @@ The base pattern `766` derives from:
 ### Devnet (766999)
 ```javascript
 const FLORA_DEVNET_CONFIG = {
-  chainId: '0xbb3e7',  // 766999 in decimal
+  chainId: '0xBB417',  // 766999 in decimal
   chainName: 'Flora Devnet',
   nativeCurrency: {
     name: 'FLORA',
@@ -214,7 +214,7 @@ const FLORA_DEVNET_CONFIG = {
 ### Mainnet (766793) - Reserved
 ```javascript
 const FLORA_MAINNET_CONFIG = {
-  chainId: '0xbb349',  // 766793 in decimal
+  chainId: '0xBB349',  // 766793 in decimal
   chainName: 'Flora Network',
   nativeCurrency: {
     name: 'FLORA',
@@ -248,8 +248,8 @@ const FLORA_MAINNET_CONFIG = {
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | 2025-10-15 | Adopt dual chain ID strategy | Separate devnet from mainnet identity |
-| 2025-10-15 | Devnet: 766999 (0xbb3e7) | FLORA-encoded + clear testnet indicator |
-| 2025-10-15 | Mainnet: 766793 (0xbb349) | Reserve premium FLORA-encoded ID |
+| 2025-10-15 | Devnet: 766999 (0xBB417) | FLORA-encoded + clear testnet indicator |
+| 2025-10-15 | Mainnet: 766793 (0xBB349) | Reserve premium FLORA-encoded ID |
 | 2025-10-15 | Deprecate 9000 | Evmos collision, UX degradation |
 
 ## Contact

@@ -93,7 +93,7 @@ Once rpc.flora.network is live:
 ### MetaMask Configuration - Devnet
 ```javascript
 const FLORA_DEVNET_CONFIG = {
-  chainId: '0xbb3e7',  // 766999 in decimal
+  chainId: '0xBB417',  // 766999 in decimal
   chainName: 'Flora Devnet',
   nativeCurrency: {
     name: 'FLORA',
@@ -108,7 +108,7 @@ const FLORA_DEVNET_CONFIG = {
 ### MetaMask Configuration - Mainnet (Reserved)
 ```javascript
 const FLORA_MAINNET_CONFIG = {
-  chainId: '0xbb349',  // 766793 in decimal (reserved for production)
+  chainId: '0xBB349',  // 766793 in decimal (reserved for production)
   chainName: 'Flora Network',
   nativeCurrency: {
     name: 'FLORA',
@@ -120,7 +120,7 @@ const FLORA_MAINNET_CONFIG = {
 };
 ```
 
-**Note**: Dual chain ID strategy - Devnet uses 766999 (0xbb3e7), Mainnet reserved for 766793 (0xbb349). See `docs/CHAIN_ID_STRATEGY.md`.
+**Note**: Dual chain ID strategy - Devnet uses 766999 (0xBB417), Mainnet reserved for 766793 (0xBB349). See `docs/CHAIN_ID_STRATEGY.md`.
 
 ### For Development (Current)
 ```javascript

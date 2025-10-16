@@ -164,7 +164,6 @@ if [ "$ROLE" = "lead" ]; then
 
   echo "🛠️  Adding dev pool account (1M FLORA): $DEVPOOL_ADDR"
   add_account_once "$DEVPOOL_ADDR" ${DEVPOOL_ALLOCATION_UFLORA}
-
   echo "🏦 Adding reserve account (9M FLORA): $RESERVE_ADDR"
   add_account_once "$RESERVE_ADDR" 9000000000000000000000000
 

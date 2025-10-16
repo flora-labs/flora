@@ -10,8 +10,8 @@ Working endpoints on port 8545:
 
 **Chain Configuration:**
 - Chain ID (Current): 9000 (0x2328) - **DEPRECATED** ⚠️ Conflicts with Evmos Testnet
-- Chain ID (Devnet): 766999 (0xbb3e7) - **Approved for Regenesis**
-- Chain ID (Mainnet): 766793 (0xbb349) - **Reserved for Production**
+- Chain ID (Devnet): 766999 (0xBB417) - **Approved for Regenesis**
+- Chain ID (Mainnet): 766793 (0xBB349) - **Reserved for Production**
 - Network Name: Flora Devnet
 - Currency Symbol: FLORA
 - Currency Decimals: 18
@@ -33,8 +33,8 @@ Working endpoints on port 8545:
 1. These are HTTP endpoints - HTTPS proxy needed for production
 2. AWS security groups may need adjustment for external access
 3. **Current**: Use eth_chainId=0x2328 (9000) for EVM signing until regenesis
-4. **Post-Regenesis (Devnet)**: Use eth_chainId=0xbb3e7 (766999) - no more Evmos conflict warnings
-5. **Mainnet (Future)**: Will use eth_chainId=0xbb349 (766793)
+4. **Post-Regenesis (Devnet)**: Use eth_chainId=0xBB417 (766999) - no more Evmos conflict warnings
+5. **Mainnet (Future)**: Will use eth_chainId=0xBB349 (766793)
 
 ## Cosmos vs EVM Transfers
 - EVM (0x… addresses): send via JSON‑RPC with chainId 9000.
@@ -60,7 +60,7 @@ const FLORA_CHAIN_CONFIG_CURRENT = {
 ### Post-Regenesis (Devnet)
 ```javascript
 const FLORA_DEVNET_CONFIG = {
-  chainId: '0xbb3e7',  // 766999 in decimal
+  chainId: '0xBB417',  // 766999 in decimal
   chainName: 'Flora Devnet',
   nativeCurrency: {
     name: 'FLORA',
@@ -75,7 +75,7 @@ const FLORA_DEVNET_CONFIG = {
 ### Mainnet (Reserved for Future)
 ```javascript
 const FLORA_MAINNET_CONFIG = {
-  chainId: '0xbb349',  // 766793 in decimal
+  chainId: '0xBB349',  // 766793 in decimal
   chainName: 'Flora Network',
   nativeCurrency: {
     name: 'FLORA',

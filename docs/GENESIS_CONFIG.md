@@ -648,7 +648,7 @@ echo "Validator setup complete"
 ### Genesis Validation
 ```bash
 # Validate genesis file
-florad validate-genesis
+florad genesis validate
 
 # Check specific module genesis
 florad query auth genesis-state

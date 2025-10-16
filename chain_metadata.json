@@ -5,7 +5,7 @@
     "evm": {
       "devnet": {
         "decimal": 766999,
-        "hex": "0xbb3e7",
+        "hex": "0xBB417",
         "decision_date": "2025-10-15",
         "status": "approved",
         "network_name": "Flora Devnet",
@@ -13,7 +13,7 @@
       },
       "mainnet": {
         "decimal": 766793,
-        "hex": "0xbb349",
+        "hex": "0xBB349",
         "decision_date": "2025-10-15",
         "status": "reserved",
         "network_name": "Flora Network",
@@ -99,8 +99,8 @@
     "documentation": "See docs/CHAIN_ID_STRATEGY.md for complete architecture"
   },
   "notes": [
-    "Devnet: 766999 (0xbb3e7) - FLORA base + test indicator",
-    "Mainnet: 766793 (0xbb349) - Full FLORA encoding (reserved)",
+    "Devnet: 766999 (0xBB417) - FLORA base + test indicator",
+    "Mainnet: 766793 (0xBB349) - Full FLORA encoding (reserved)",
     "Both chain IDs verified unused on all major chain registries",
     "Designed to eliminate MetaMask network mismatch warnings",
     "Devnet regenesis required to migrate from 9000 to 766999"

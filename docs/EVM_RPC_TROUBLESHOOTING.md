@@ -49,7 +49,7 @@ curl -s -X POST http://52.9.17.25:8545 \
   -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}' \
   | jq '.result'
-# Will return: "0xbb3e7" (766999 decimal)
+# Will return: "0xBB417" (766999 decimal)
 
 # net_version (Tendermint/Cosmos) - UNCHANGED
 curl -s -X POST http://52.9.17.25:8545 \
@@ -152,8 +152,8 @@ module.exports = {
   networks: {
     flora: {
       url: "http://52.9.17.25:8545",
-      chainId: 9000, // Use eth_chainId (current)
-      // chainId: 766999, // Use this after regenesis
+  chainId: 9000, // Use eth_chainId (current)
+  // chainId: 766999, // Use this after regenesis (0xBB417)
       accounts: [process.env.PRIVATE_KEY]
     }
   }
@@ -234,7 +234,7 @@ await window.ethereum.request({
 await window.ethereum.request({
   method: 'wallet_addEthereumChain',
   params: [{
-    chainId: '0xbb3e7', // 766999 - Use eth_chainId!
+    chainId: '0xBB417', // 766999 - Use eth_chainId!
     chainName: 'Flora Devnet',
     nativeCurrency: {
       name: 'FLORA',
@@ -257,7 +257,7 @@ Rabby automatically detects chain ID via `eth_chainId`. No special configuration
 const provider = new WalletConnectProvider({
   rpc: {
     9000: 'http://52.9.17.25:8545', // Use eth_chainId as key
-    // 766999: 'https://rpc.devnet.flora.network', // Post-regenesis
+    // 766999: 'https://rpc.devnet.flora.network', // Post-regenesis (0xBB417)
   },
   chainId: 9000, // Current eth_chainId
 });
@@ -295,7 +295,7 @@ echo "$NET_VERSION"
 echo ""
 echo "Expected values:"
 echo "  Pre-regenesis:  eth_chainId=0x2328 (9000), net_version=7668378"
-echo "  Post-regenesis: eth_chainId=0xbb3e7 (766999), net_version=7668378"
+echo "  Post-regenesis: eth_chainId=0xBB417 (766999), net_version=7668378"
 ```
 
 ### Test Transaction Signing
@@ -411,8 +411,8 @@ The Cosmos chain ID is separate and set at the top level:
 | Network | Cosmos Chain ID | EVM Chain ID (eth_chainId) | Network ID (net_version) |
 |---------|-----------------|---------------------------|--------------------------|
 | Current Devnet | flora_7668378-1 | 9000 (0x2328) | 7668378 |
-| New Devnet | flora_7668378-1 | 766999 (0xbb3e7) | 7668378 |
-| Mainnet (Reserved) | flora_7668378-1 | 766793 (0xbb349) | 7668378 |
+| New Devnet | flora_7668378-1 | 766999 (0xBB417) | 7668378 |
+| Mainnet (Reserved) | flora_7668378-1 | 766793 (0xBB349) | 7668378 |
 
 ### RPC Methods
 

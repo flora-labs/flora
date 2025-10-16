@@ -32,6 +32,8 @@ Out:
 - Dev images and configs ready for regenesis.
 - Maintenance window announced to team (60–90 minutes).
 
+Note: For full isolation from any legacy peers, consider bumping the Cosmos chain-id revision from `flora_7668378-1` to `flora_7668378-2` during this regenesis. This is optional for devnet because the new genesis hash already prevents accidental peering, but many Cosmos networks increment the revision for clarity.
+
 ## Selecting a New ChainId
 
 1) Pick a high, unclaimed EIP‑155 decimal (avoid popular/reserved IDs).
@@ -41,7 +43,7 @@ Out:
 
 Decision record: store final decimal+hex in `chain_metadata.json`.
 
-### **Selected Chain ID for Devnet: 766999 (0xbb3e7)**
+### **Selected Chain ID for Devnet: 766999 (0xBB417)**
 
 **Decision Date**: 2025-10-15
 **Network**: Devnet only (mainnet reserved separately)
@@ -55,10 +57,10 @@ Decision record: store final decimal+hex in `chain_metadata.json`.
 - Provides clean MetaMask experience with zero warnings
 - Reserves premium chain ID (766793) for mainnet launch
 
-**Mainnet Reserved**: 766793 (0xbb349) - Full FLORA encoding, saved for production
+**Mainnet Reserved**: 766793 (0xBB349) - Full FLORA encoding, saved for production
 
 **Alternatives Considered**:
-- 766793 (0xbb349) - Reserved for mainnet (premium FLORA encoding)
+- 766793 (0xBB349) - Reserved for mainnet (premium FLORA encoding)
 - 76679 (0x12b87) - Shorter variant, less distinctive
 - 420766 (0x66b9e) - Memorable prefix, no FLORA connection
 - 7668378 (0x75029a) - Original plan, already used by QL1 Testnet
@@ -131,6 +133,5 @@ Decision record: store final decimal+hex in `chain_metadata.json`.
 ## Implementation Log
 
 - 2025-10-15: Draft runbook created. Awaiting chainId decision and window scheduling.
-- 2025-10-15: Chain ID decision finalized. Devnet: 766999 (0xbb3e7), Mainnet reserved: 766793 (0xbb349).
+- 2025-10-15: Chain ID decision finalized. Devnet: 766999 (0xBB417), Mainnet reserved: 766793 (0xBB349).
 - 2025-10-15: Created comprehensive chain ID strategy document (`docs/CHAIN_ID_STRATEGY.md`).
-
