@@ -63,8 +63,8 @@ make testnet
 ## 📡 Network Endpoints
 
 ### Flora Testnet
-- **Chain ID**: `flora_7668378-1`
-- **EVM Chain ID**: `7668378`
+- **Chain ID**: `flora_766999-1`
+- **EVM Chain ID**: `766999`
 
 #### Public RPC Endpoints
 - **Validator 1**: `http://52.9.17.25:26657` (seed1.testnet.flora.network)
