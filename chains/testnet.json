@@ -33,26 +33,22 @@
                     {
                         "name": "acc0",
                         "amount": "25000000000%DENOM%",
-                        "address": "flora13a6zjh96w9z9y2defkktdc6vn4r5h3s7q7p0ug",
-                        "mnemonic": "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
+                        "address": "flora13a6zjh96w9z9y2defkktdc6vn4r5h3s7q7p0ug"
                     },
                     {
                         "name": "acc1",
                         "amount": "24000000000%DENOM%",
-                        "address": "flora1xehj0xc24k2c740jslfyd4d6mt8c4dcz6rvnkm",
-                        "mnemonic": "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
+                        "address": "flora1xehj0xc24k2c740jslfyd4d6mt8c4dcz6rvnkm"
                     },
                     {
                         "name": "user0",
                         "amount": "100000%DENOM%",
-                        "address": "flora1mc69r2luc4gph38a40jqth7nrwcqx2tuuxsegy",
-                        "mnemonic": "toddler among more act force relief man club clarify basket diagram feed seed manual burden utility visa leisure load helmet super girl fly correct"
+                        "address": "flora1mc69r2luc4gph38a40jqth7nrwcqx2tuuxsegy"
                     },
                     {
                         "name": "user1",
                         "amount": "100000%DENOM%",
-                        "address": "flora1z6kmcwt5g2r59glqun92qg9ukpftw3wnnpyasc",
-                        "mnemonic": "usage stamp peasant this wave eyebrow nephew hello mutual fault title above dwarf faith social rice foster again filter couple myth magnet mosquito keep"
+                        "address": "flora1z6kmcwt5g2r59glqun92qg9ukpftw3wnnpyasc"
                     }
                 ]
             },
@@ -126,26 +122,22 @@
                     {
                         "name": "acc0",
                         "amount": "25000000000%DENOM%",
-                        "address": "cosmos1hj5fveer5cjtn4wd6wstzugjfdxzl0xpxvjjvr",
-                        "mnemonic": "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
+                        "address": "cosmos1hj5fveer5cjtn4wd6wstzugjfdxzl0xpxvjjvr"
                     },
                     {
                         "name": "acc1",
                         "amount": "24000000000%DENOM%",
-                        "address": "cosmos1efd63aw40lxf3n4mhf7dzhjkr453axur6cpk92",
-                        "mnemonic": "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
+                        "address": "cosmos1efd63aw40lxf3n4mhf7dzhjkr453axur6cpk92"
                     },
                     {
                         "name": "user0",
                         "amount": "100000%DENOM%",
-                        "address": "cosmos1gnmjwum6x2z6cx2wpd2n92a9l32gvvyynxqlqu",
-                        "mnemonic": "slow sorry survey fiber day refuse essay east way tree trigger focus drive text pepper neglect robot wisdom include typical dose bonus gallery filter"
+                        "address": "cosmos1gnmjwum6x2z6cx2wpd2n92a9l32gvvyynxqlqu"
                     },
                     {
                         "name": "user1",
                         "amount": "100000%DENOM%",
-                        "address": "cosmos106xaej7m2d4ttphtqg9l9fsftcgp66v0t72wfp",
-                        "mnemonic": "ordinary marriage tobacco kite film place garment lake index lawsuit jealous fault basket rice bronze entire choose churn vacuum empty primary small bar shiver"
+                        "address": "cosmos106xaej7m2d4ttphtqg9l9fsftcgp66v0t72wfp"
                     }
                 ]
             },

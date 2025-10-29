@@ -1,0 +1,90 @@
+{
+  "chains": [
+    {
+      "name": "flora",
+      "chain_id": "flora_766999-1",
+      "docker_image": {
+        "repository": "flora",
+        "version": "local",
+        "uid-gid": ""
+      },
+      "gas_prices": "0.0petal",
+      "gas_adjustment": 2,
+      "genesis": {
+        "modify": [
+          {
+            "key": "app_state.gov.params.voting_period",
+            "value": "10s"
+          },
+          {
+            "key": "app_state.gov.params.max_deposit_period",
+            "value": "10s"
+          },
+          {
+            "key": "app_state.gov.params.min_deposit.0.denom",
+            "value": "petal"
+          },
+          {
+            "key": "app_state.gov.params.min_deposit.0.amount",
+            "value": "1"
+          }
+        ],
+        "accounts": [
+          {
+            "name": "acc0",
+            "amount": "25000000000%DENOM%",
+            "address": "${ACC0_ADDRESS}"
+          },
+          {
+            "name": "acc1",
+            "amount": "24000000000%DENOM%",
+            "address": "${ACC1_ADDRESS}"
+          },
+          {
+            "name": "user0",
+            "amount": "100000%DENOM%",
+            "address": "${USER0_ADDRESS}"
+          },
+          {
+            "name": "user1",
+            "amount": "100000%DENOM%",
+            "address": "${USER1_ADDRESS}"
+          }
+        ]
+      },
+      "config_file_overrides": [
+        {
+          "file": "config/app.toml",
+          "paths": {
+            "api.enabled-unsafe-cors": true
+          }
+        },
+        {
+          "file": "config/config.toml",
+          "paths": {
+            "rpc.cors_allowed_origins": [
+              "*"
+            ]
+          }
+        }
+      ],
+      "number_vals": 1,
+      "number_node": 0,
+      "chain_type": "cosmos",
+      "coin_type": 60,
+      "binary": "florad",
+      "bech32_prefix": "flora",
+      "denom": "petal",
+      "trusting_period": "336h",
+      "debugging": false,
+      "block_time": "2000ms",
+      "host_port_override": {
+        "1317": "1317",
+        "26656": "26656",
+        "26657": "26657",
+        "9090": "9090"
+      },
+      "ics_version_override": {}
+    }
+  ]
+}

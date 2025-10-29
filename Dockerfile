@@ -1,6 +1,6 @@
 FROM golang:1.23.6-alpine3.20 AS build-env
 
-SHELL ["/bin/sh", "-ecuxo", "pipefail"]
+SHELL ["/bin/sh", "-ec"]
 
 RUN set -eux; apk add --no-cache \
     ca-certificates \
@@ -8,7 +8,8 @@ RUN set -eux; apk add --no-cache \
     git \
     linux-headers \
     bash \
-    binutils-gold
+    binutils-gold \
+    wget
 
 WORKDIR /code
 
@@ -39,7 +40,11 @@ FROM alpine:3.21
 
 COPY --from=build-env /code/build/florad /usr/bin/florad
 
-RUN apk add --no-cache ca-certificates curl make bash jq sed
+RUN adduser -D -H -s /sbin/nologin -u 1025 flora \
+  && apk add --no-cache ca-certificates \
+  && chown flora:flora /usr/bin/florad
+
+USER flora
 
 WORKDIR /opt
 

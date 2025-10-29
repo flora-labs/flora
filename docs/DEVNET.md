@@ -34,7 +34,7 @@ florad start
 
 ### Chain Parameters
 - **Chain ID**: `flora_766999-1`
-- **EVM Chain ID**: `766999` (0xBB417) - Devnet
+- **EVM Chain ID**: `766999` (0x74FD37) - Devnet
 - **EVM Chain ID (Future)**: `766793` (0xBB349) - Mainnet (reserved)
 - **Native Token**: uflora
 - **Consensus**: Tendermint BFT

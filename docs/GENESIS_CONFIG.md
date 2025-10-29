@@ -15,13 +15,59 @@ The genesis file is the initial configuration that bootstraps a Flora blockchain
 - [Network Examples](#network-examples)
 - [Tools and Scripts](#tools-and-scripts)
 
+## Security and Config Generation
+
+Important: Hard-coded mnemonics and addresses have been removed from repo configs. Use the example templates and the generator script to produce concrete, local-only configs.
+
+- Example templates:
+  - chains/standalone.example.json
+  - chains/self-ibc.example.json
+  - chains/testnet.example.json
+- Generator script:
+  - scripts/generate_chain_config.sh
+
+What this does:
+- Derives addresses from provided mnemonics or generates new dev mnemonics using florad
+- Renders real configs into chains/generated/
+- Writes chains/generated/addresses.env and chains/generated/addresses.json with any generated mnemonics and derived addresses
+- chains/generated/ is ignored by git
+
+Quick usage:
+```bash
+# Standalone local config
+scripts/generate_chain_config.sh -t standalone
+
+# Self-IBC config for two local chains
+scripts/generate_chain_config.sh -t self-ibc
+
+# Testnet with a Gaia peer chain (provide Gaia addrs if you want to replace placeholders)
+GAIA_ACC0_ADDRESS="cosmos1..." GAIA_ACC1_ADDRESS="cosmos1..." \
+  scripts/generate_chain_config.sh -t testnet
+```
+
+Environment inputs (optional):
+- ACC0_MNEMONIC, ACC1_MNEMONIC, USER0_MNEMONIC, USER1_MNEMONIC
+- For self-ibc second chain: ACC0_MNEMONIC_2, ACC1_MNEMONIC_2, USER0_MNEMONIC_2, USER1_MNEMONIC_2
+- Chain ID overrides: CHAIN_ID and, for self-ibc, CHAIN_ID_2
+
+Output:
+- chains/generated/&lt;template&gt;.json
+- chains/generated/addresses.env, chains/generated/addresses.json
+
+Do not commit:
+- Any generated mnemonics or addresses files. These are intentionally git-ignored.
+- Deterministic test mnemonics are kept only in interchaintest for automated tests; never use them for any public or persistent network.
+
+Notes on Chain IDs:
+- Example templates default to flora_766999-1 style IDs for devnet consistency
+- You can override via CHAIN_ID (and CHAIN_ID_2 for self-ibc)
 ## Genesis Structure
 
 ### Basic Structure
 ```json
 {
   "genesis_time": "2024-01-01T00:00:00Z",
-  "chain_id": "flora_7668378-1",
+  "chain_id": "flora_766999-1",
   "initial_height": "1",
   "consensus_params": {...},
   "app_hash": "",
@@ -42,11 +88,11 @@ The genesis file is the initial configuration that bootstraps a Flora blockchain
 Flora uses EVM-compatible chain IDs:
 ```
 Format: {identifier}_{evm-chain-id}-{version}
-Example: flora_7668378-1
+Example: flora_766999-1
 ```
 
 - **identifier**: Chain name (flora)
-- **evm-chain-id**: EVM chain ID (7668378 = 0x75029a)
+- **evm-chain-id**: EVM chain ID (766999 (0xBB417))
 - **version**: Version number for upgrades
 
 ### Consensus Parameters
@@ -385,7 +431,7 @@ florad add-genesis-account flora1... 1000000000uflora \
 ```bash
 # Generate validator transaction
 florad gentx validator-key 100000000uflora \
-  --chain-id flora_7668378-1 \
+  --chain-id flora_766999-1 \
   --moniker="Validator-1" \
   --commission-max-change-rate="0.01" \
   --commission-max-rate="0.20" \
@@ -486,7 +532,7 @@ florad collect-gentxs
 ```json
 {
   "genesis_time": "2024-06-01T00:00:00Z",
-  "chain_id": "flora_7668378-1",
+  "chain_id": "flora_766999-1",
   "consensus_params": {
     "block": {
       "max_gas": "100000000"
@@ -516,7 +562,7 @@ florad collect-gentxs
 ```json
 {
   "genesis_time": "2024-01-01T00:00:00Z",
-  "chain_id": "flora_7668378-1",
+  "chain_id": "flora_766999-1",
   "consensus_params": {
     "block": {
       "max_gas": "100000000"
@@ -593,7 +639,7 @@ update_genesis() {
 }
 
 # Set chain parameters
-update_genesis '.chain_id="flora_7668378-1"'
+update_genesis '.chain_id="flora_766999-1"'
 update_genesis '.consensus_params["block"]["max_gas"]="100000000"'
 
 # Configure modules
@@ -617,7 +663,7 @@ echo "Genesis configuration updated successfully"
 #!/bin/bash
 # setup_validator.sh
 
-CHAIN_ID="flora_7668378-1"
+CHAIN_ID="flora_766999-1"
 MONIKER="my-validator"
 AMOUNT="100000000uflora"
 
@@ -681,10 +727,10 @@ jq '.app_state.genutil.gen_txs[].body.messages[0].value' genesis.json
 **Solution**: Ensure consistency:
 ```bash
 # Chain ID should match pattern
-CHAIN_ID="flora_7668378-1"  # 7668378 is EVM chain ID
+CHAIN_ID="flora_766999-1"  # 766999 is EVM chain ID
 
 # Update EVM config
-jq '.app_state.evm.params.chain_config.chain_id = "7668378"' genesis.json
+jq '.app_state.evm.params.chain_config.chain_id = "766999"' genesis.json
 ```
 
 ### Problem: Insufficient Validator Stake
@@ -736,7 +782,7 @@ florad start --genesis new_genesis.json
 
 ### Chain ID Versioning
 ```
-Initial: flora_7668378-1
+Initial: flora_766999-1
 Upgrade: flora_7668378-2
 Major:   flora_7668379-1
 ```

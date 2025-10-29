@@ -33,26 +33,22 @@
                     {
                         "name": "acc0",
                         "amount": "25000000000%DENOM%",
-                        "address": "flora13a6zjh96w9z9y2defkktdc6vn4r5h3s7q7p0ug",
-                        "mnemonic": "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
+                        "address": "flora13a6zjh96w9z9y2defkktdc6vn4r5h3s7q7p0ug"
                     },
                     {
                         "name": "acc1",
                         "amount": "24000000000%DENOM%",
-                        "address": "flora1xehj0xc24k2c740jslfyd4d6mt8c4dcz6rvnkm",
-                        "mnemonic": "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
+                        "address": "flora1xehj0xc24k2c740jslfyd4d6mt8c4dcz6rvnkm"
                     },
                     {
                         "name": "user0",
                         "amount": "100000%DENOM%",
-                        "address": "flora1mc69r2luc4gph38a40jqth7nrwcqx2tuuxsegy",
-                        "mnemonic": "toddler among more act force relief man club clarify basket diagram feed seed manual burden utility visa leisure load helmet super girl fly correct"
+                        "address": "flora1mc69r2luc4gph38a40jqth7nrwcqx2tuuxsegy"
                     },
                     {
                         "name": "user1",
                         "amount": "100000%DENOM%",
-                        "address": "flora1z6kmcwt5g2r59glqun92qg9ukpftw3wnnpyasc",
-                        "mnemonic": "usage stamp peasant this wave eyebrow nephew hello mutual fault title above dwarf faith social rice foster again filter couple myth magnet mosquito keep"
+                        "address": "flora1z6kmcwt5g2r59glqun92qg9ukpftw3wnnpyasc"
                     }
                 ]
             },
