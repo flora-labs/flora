@@ -165,7 +165,8 @@ const (
 	NodeDir      = ".flora"
 	Bech32Prefix = "flora"
 
-	ChainID = "localchain_9000-1"
+	// Updated to use the correct devnet chain ID with EVM chain ID 766999
+	ChainID = "flora_766999-1"
 )
 
 var (
@@ -195,8 +196,8 @@ var (
 
 	BaseDenomUnit int64 = 18
 
-	BaseDenom    = "petal"
-	DisplayDenom = "MY_DENOM_DISPLAY"
+	BaseDenom    = "uflora"
+	DisplayDenom = "FLORA"
 
 	// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address
 	Bech32PrefixAccAddr = Bech32Prefix

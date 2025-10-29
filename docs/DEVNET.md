@@ -1,5 +1,12 @@
 # Flora DevNet Documentation
 
+> **⚠️ DEVNET REGENESIS IN PROGRESS (Oct 16, 2025)**
+>
+> The devnet is currently undergoing regenesis to implement EVM Chain ID 766999.
+> - **Current Status**: See `docs/CURRENT_STATE.md` for latest progress
+> - **Recovery Guide**: See `docs/SESSION_RECOVERY_20251016.md` for complete details
+> - **Critical Discovery**: Empty delegator_address in gentx is NORMAL behavior
+
 ## Overview
 Flora DevNet is a development blockchain network for testing and development purposes. This document provides comprehensive instructions for deploying and managing Flora DevNet nodes.
 
@@ -11,7 +18,7 @@ Flora DevNet is a development blockchain network for testing and development pur
 make install
 
 # Initialize node
-florad init mynode --chain-id flora_7668378-1
+florad init mynode --chain-id flora_766999-1
 
 # Start node
 florad start
@@ -26,8 +33,9 @@ florad start
 ## Network Configuration
 
 ### Chain Parameters
-- **Chain ID**: `flora_7668378-1`
-- **EVM Chain ID**: `7668378` (0x75029a)
+- **Chain ID**: `flora_766999-1`
+- **EVM Chain ID**: `766999` (0x74FD37) - Devnet
+- **EVM Chain ID (Future)**: `766793` (0xBB349) - Mainnet (reserved)
 - **Native Token**: uflora
 - **Consensus**: Tendermint BFT
 - **Block Time**: ~5 seconds
@@ -50,7 +58,7 @@ florad start
 
 1. **Initialize Genesis**
 ```bash
-florad init local-node --chain-id flora_7668378-1
+florad init local-node --chain-id flora_766999-1
 ```
 
 2. **Configure Genesis**
@@ -61,7 +69,7 @@ florad genesis add-genesis-account validator 1000000000uflora --keyring-backend 
 
 # Create genesis transaction
 florad genesis gentx validator 1000000uflora \
-  --chain-id flora_7668378-1 \
+  --chain-id flora_766999-1 \
   --keyring-backend test
 
 # Collect genesis transactions

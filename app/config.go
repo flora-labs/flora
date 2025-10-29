@@ -31,6 +31,24 @@ var ChainsCoinInfo = map[string]evmtypes.EvmCoinInfo{
 		DisplayDenom: DisplayDenom,
 		Decimals:     evmtypes.EighteenDecimals,
 	},
+	// Support for the actual devnet chain ID
+	"flora_7668378-1": {
+		Denom:        BaseDenom,
+		DisplayDenom: DisplayDenom,
+		Decimals:     evmtypes.EighteenDecimals,
+	},
+	// Support for the chain ID prefix
+	"flora_7668378": {
+		Denom:        BaseDenom,
+		DisplayDenom: DisplayDenom,
+		Decimals:     evmtypes.EighteenDecimals,
+	},
+	// Support for the new devnet chain ID with 766999
+	"flora_766999": {
+		Denom:        BaseDenom,
+		DisplayDenom: DisplayDenom,
+		Decimals:     evmtypes.EighteenDecimals,
+	},
 }
 
 // EVMAppOptions allows to setup the global configuration

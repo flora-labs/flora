@@ -5,7 +5,7 @@
 # CHAIN_ID="localchain_9000-1" HOME_DIR="~/.flora" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
 # CHAIN_ID="localchain_9000-2" HOME_DIR="~/.flora" CLEAN=true RPC=36657 REST=2317 PROFF=6061 P2P=36656 GRPC=8090 GRPC_WEB=8091 ROSETTA=8081 BLOCK_TIME="500ms" sh scripts/test_node.sh
 
-set -eu
+set -euo pipefail
 
 export KEY="acc0"
 export KEY2="acc1"
@@ -28,11 +28,22 @@ export GRPC_WEB=${GRPC_WEB:-"9091"}
 export ROSETTA=${ROSETTA:-"8080"}
 export BLOCK_TIME=${BLOCK_TIME:-"5s"}
 
-# if which binary does not exist, install it
-if [ -z `which $BINARY` ]; then
+# Safety: refuse non-dev chain IDs unless acknowledged
+if [ "${I_UNDERSTAND_DEV_SCRIPT:-}" != "true" ]; then
+  case "$CHAIN_ID" in
+    local*|flora_766*) ;;
+    *)
+      echo "Refusing to run on CHAIN_ID=$CHAIN_ID without I_UNDERSTAND_DEV_SCRIPT=true"
+      exit 1
+      ;;
+  esac
+fi
+
+# if binary does not exist, install it
+if ! command -v "$BINARY" >/dev/null 2>&1; then
   make install
 
-  if [ -z `which $BINARY` ]; then
+  if ! command -v "$BINARY" >/dev/null 2>&1; then
     echo "Ensure $BINARY is installed and in your PATH"
     exit 1
   fi
@@ -57,7 +68,7 @@ from_scratch () {
       echo "HOME_DIR must be more than 2 characters long"
       return
   fi
-  rm -rf $HOME_DIR && echo "Removed $HOME_DIR"
+  rm -rf "$HOME_DIR" && echo "Removed $HOME_DIR"
 
   # reset values if not set already after whipe
   set_config
@@ -126,7 +137,7 @@ from_scratch () {
 
   $BINARY genesis collect-gentxs --home $HOME_DIR
 
-  $BINARY genesis validate-genesis --home $HOME_DIR
+  $BINARY genesis validate --home $HOME_DIR
   err=$?
   if [ $err -ne 0 ]; then
     echo "Failed to validate genesis"
@@ -143,26 +154,26 @@ fi
 echo "Starting node..."
 
 # Opens the RPC endpoint to outside connections
-sed -i -e 's/laddr = "tcp:\/\/127.0.0.1:26657"/c\laddr = "tcp:\/\/0.0.0.0:'$RPC'"/g' $HOME_DIR/config/config.toml
-sed -i -e 's/cors_allowed_origins = \[\]/cors_allowed_origins = \["\*"\]/g' $HOME_DIR/config/config.toml
+sed -i -e "s#laddr = \"tcp://127.0.0.1:26657\"#laddr = \"tcp://0.0.0.0:${RPC}\"#g" "$HOME_DIR/config/config.toml"
+sed -i -e 's/cors_allowed_origins = \[\]/cors_allowed_origins = ["*"]/g' "$HOME_DIR/config/config.toml"
 
 # REST endpoint
-sed -i -e 's/address = "tcp:\/\/localhost:1317"/address = "tcp:\/\/0.0.0.0:'$REST'"/g' $HOME_DIR/config/app.toml
-sed -i -e 's/enable = false/enable = true/g' $HOME_DIR/config/app.toml
-sed -i -e 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/g' $HOME_DIR/config/app.toml
+sed -i -e "s#address = \"tcp://localhost:1317\"#address = \"tcp://0.0.0.0:${REST}\"#g" "$HOME_DIR/config/app.toml"
+sed -i -e 's/enable = false/enable = true/g' "$HOME_DIR/config/app.toml"
+sed -i -e 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/g' "$HOME_DIR/config/app.toml"
 
 # peer exchange
-sed -i -e 's/pprof_laddr = "localhost:6060"/pprof_laddr = "localhost:'$PROFF'"/g' $HOME_DIR/config/config.toml
-sed -i -e 's/laddr = "tcp:\/\/0.0.0.0:26656"/laddr = "tcp:\/\/0.0.0.0:'$P2P'"/g' $HOME_DIR/config/config.toml
+sed -i -e "s#pprof_laddr = \"localhost:6060\"#pprof_laddr = \"localhost:${PROFF}\"#g" "$HOME_DIR/config/config.toml"
+sed -i -e "s#laddr = \"tcp://0.0.0.0:26656\"#laddr = \"tcp://0.0.0.0:${P2P}\"#g" "$HOME_DIR/config/config.toml"
 
 # GRPC
-sed -i -e 's/address = "localhost:9090"/address = "0.0.0.0:'$GRPC'"/g' $HOME_DIR/config/app.toml
-sed -i -e 's/address = "localhost:9091"/address = "0.0.0.0:'$GRPC_WEB'"/g' $HOME_DIR/config/app.toml
+sed -i -e "s#address = \"localhost:9090\"#address = \"0.0.0.0:${GRPC}\"#g" "$HOME_DIR/config/app.toml"
+sed -i -e "s#address = \"localhost:9091\"#address = \"0.0.0.0:${GRPC_WEB}\"#g" "$HOME_DIR/config/app.toml"
 
 # Rosetta Api
-sed -i -e 's/address = ":8080"/address = "0.0.0.0:'$ROSETTA'"/g' $HOME_DIR/config/app.toml
+sed -i -e "s#address = \":8080\"#address = \"0.0.0.0:${ROSETTA}\"#g" "$HOME_DIR/config/app.toml"
 
 # Faster blocks
-sed -i -e 's/timeout_commit = "5s"/timeout_commit = "'$BLOCK_TIME'"/g' $HOME_DIR/config/config.toml
+sed -i -e "s#timeout_commit = \"5s\"#timeout_commit = \"${BLOCK_TIME}\"#g" "$HOME_DIR/config/config.toml"
 
-$BINARY start --pruning=nothing  --minimum-gas-prices=0$DENOM --rpc.laddr="tcp://0.0.0.0:$RPC" --home $HOME_DIR --json-rpc.api=eth,txpool,personal,net,debug,web3 --chain-id="$CHAIN_ID"
+$BINARY start --pruning=nothing  --minimum-gas-prices=0$DENOM --rpc.laddr="tcp://0.0.0.0:$RPC" --home "$HOME_DIR" --json-rpc.api=eth,txpool,personal,net,debug,web3 --chain-id="$CHAIN_ID"

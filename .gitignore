@@ -108,3 +108,20 @@ pip-log.txt
 .project
 .classpath
 .settings/
+
+# Security: AI artifacts and planning files
+plans/
+plan.md
+todo.md
+*.plan.md
+ai/
+scripts/ai/
+
+# Security: generated chain configs and dev-only secrets
+chains/generated/
+genesis_accounts.env
+genesis_accounts.json
+faucet_key.json
+devpool_key.json
+validator_key.json
+reserve_key.json

@@ -372,7 +372,7 @@ async function getGasPrices() {
         "enable_call": true,
         "extra_eips": [],
         "chain_config": {
-          "chain_id": "7668378"
+          "chain_id": "766999"
         }
       }
     }
