@@ -1,0 +1,26 @@
+# Build Linux binary for Flora
+FROM golang:1.23-alpine AS builder
+
+# Install build dependencies
+RUN apk add --no-cache make git gcc musl-dev linux-headers
+
+# Set working directory
+WORKDIR /flora
+
+# Copy go mod files
+COPY go.mod go.sum ./
+
+# Download dependencies
+RUN go mod download
+
+# Copy source code
+COPY . .
+
+# Build the binary for Linux
+RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 make build
+
+# Extract the binary
+FROM alpine:latest
+COPY --from=builder /flora/build/florad /florad
+
+ENTRYPOINT ["/bin/sh"]
