@@ -1,12 +1,5 @@
 # Flora DevNet Documentation
 
-> **⚠️ DEVNET REGENESIS IN PROGRESS (Oct 16, 2025)**
->
-> The devnet is currently undergoing regenesis to implement EVM Chain ID 766999.
-> - **Current Status**: See `docs/CURRENT_STATE.md` for latest progress
-> - **Recovery Guide**: See `docs/SESSION_RECOVERY_20251016.md` for complete details
-> - **Critical Discovery**: Empty delegator_address in gentx is NORMAL behavior
-
 ## Overview
 Flora DevNet is a development blockchain network for testing and development purposes. This document provides comprehensive instructions for deploying and managing Flora DevNet nodes.
 
