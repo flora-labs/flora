@@ -142,7 +142,7 @@ Direct access to Cosmos functionality from smart contracts:
 ## 📚 Documentation
 
 Comprehensive documentation is available in the `/docs` directory:
-- [DevNet Guide](DEVNET.md)
+- [DevNet Guide](docs/DEVNET.md)
 - [Testing Guide](docs/TESTING_GUIDE.md)
 - [Gas and Fees](docs/GAS_AND_FEES.md)
 - [Genesis Configuration](docs/GENESIS_CONFIG.md)
