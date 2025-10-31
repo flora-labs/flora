@@ -5,7 +5,7 @@ Flora DevNet is a development blockchain network for testing and development pur
 
 ## Quick Start
 
-### Single Node DevNet
+### Single Node DevNet (New Network)
 ```bash
 # Build Flora
 make install
@@ -13,6 +13,26 @@ make install
 # Initialize node
 florad init mynode --chain-id flora_766999-1
 
+# Start node
+florad start
+```
+
+### Joining Existing DevNet
+
+To join an existing DevNet, you need the genesis file from the running network:
+
+```bash
+# Build Flora
+make install
+
+# Initialize node
+florad init mynode --chain-id flora_766999-1
+
+# Get genesis file from running network (contact team for access)
+# Replace the default genesis with the network's genesis
+cp [network-genesis.json] ~/.flora/config/genesis.json
+
+# Configure seeds in ~/.flora/config/config.toml
 # Start node
 florad start
 ```
